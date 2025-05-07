@@ -44,6 +44,6 @@ public class AmadeusAuthClient {
             return (String) response.getBody().get("access_token");
         }
 
-        throw new RuntimeException("No se pudo obtener el token de acceso");
+        throw new RuntimeException("Couldn't fetch the acces token");
     }
 }

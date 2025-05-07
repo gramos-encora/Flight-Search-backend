@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/airlines")
+@RequestMapping("/api/airlines")
 public class AirlineController {
     private static final Logger log = LoggerFactory.getLogger(AirlineController.class);
     private final AirlineService airlineService;
