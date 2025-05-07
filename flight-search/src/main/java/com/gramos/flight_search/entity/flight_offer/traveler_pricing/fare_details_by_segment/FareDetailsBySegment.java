@@ -1,4 +1,4 @@
-package com.gramos.flight_search.entity;
+package com.gramos.flight_search.entity.flight_offer.traveler_pricing.fare_details_by_segment;
 
 public class FareDetailsBySegment {
     private String segmentId;

@@ -1,4 +1,4 @@
-package com.gramos.flight_search.entity;
+package com.gramos.flight_search.entity.flight_offer.itinerary.segment;
 
 public class Segment {
     private FlightEndpoint departure;

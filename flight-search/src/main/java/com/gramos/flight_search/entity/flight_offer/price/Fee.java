@@ -1,4 +1,4 @@
-package com.gramos.flight_search.entity;
+package com.gramos.flight_search.entity.flight_offer.price;
 
 public class Fee {
     private String amount;

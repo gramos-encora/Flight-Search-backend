@@ -1,6 +1,9 @@
-package com.gramos.flight_search.entity;
+package com.gramos.flight_search.entity.flight_offer;
 
-import java.time.LocalDate;
+import com.gramos.flight_search.entity.flight_offer.itinerary.Itinerary;
+import com.gramos.flight_search.entity.flight_offer.price.Price;
+import com.gramos.flight_search.entity.flight_offer.traveler_pricing.TravelerPricing;
+
 import java.util.List;
 
 public class FlightOffer {

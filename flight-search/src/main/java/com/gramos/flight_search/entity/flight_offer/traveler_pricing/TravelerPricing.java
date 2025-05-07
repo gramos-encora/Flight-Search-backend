@@ -1,4 +1,7 @@
-package com.gramos.flight_search.entity;
+package com.gramos.flight_search.entity.flight_offer.traveler_pricing;
+
+import com.gramos.flight_search.entity.flight_offer.traveler_pricing.fare_details_by_segment.FareDetailsBySegment;
+import com.gramos.flight_search.entity.flight_offer.price.Price;
 
 import java.util.List;
 

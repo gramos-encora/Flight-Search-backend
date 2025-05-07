@@ -1,4 +1,6 @@
-package com.gramos.flight_search.entity;
+package com.gramos.flight_search.entity.flight_offer.itinerary;
+
+import com.gramos.flight_search.entity.flight_offer.itinerary.segment.Segment;
 
 import java.util.List;
 
