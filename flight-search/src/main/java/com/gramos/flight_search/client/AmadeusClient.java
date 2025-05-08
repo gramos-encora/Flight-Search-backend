@@ -1,9 +1,11 @@
 package com.gramos.flight_search.client;
 
 import com.gramos.flight_search.dto.AirportDTO;
+import com.gramos.flight_search.dto.FlightOfferDTO;
 import com.gramos.flight_search.dto.amadeus.AmadeusAirlineData;
 import com.gramos.flight_search.dto.amadeus.AmadeusAirlineResponse;
 import com.gramos.flight_search.dto.amadeus.AmadeusAirportResponse;
+import com.gramos.flight_search.dto.amadeus.AmadeusFlightOfferResponse;
 import com.gramos.flight_search.entity.Airline;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -80,5 +82,45 @@ public class AmadeusClient {
                 ))
                 .collect(Collectors.toList());
     }
+
+    public List<FlightOfferDTO> fetchFlightOffers(
+            String origin,
+            String destination,
+            String departureDate,
+            String returnDate,     // optional
+            int adults,
+            boolean nonStop,
+            int max,
+            String currencyCode    // optional
+    ) {
+        String accessToken = authClient.getAccessToken();
+
+        StringBuilder urlBuilder = new StringBuilder(String.format(
+                "%s/v2/shopping/flight-offers?originLocationCode=%s&destinationLocationCode=%s&departureDate=%s&adults=%d&nonStop=%b&max=%d",
+                baseUrl, origin, destination, departureDate, adults, nonStop, max
+        ));
+
+        if (returnDate != null && !returnDate.isBlank()) {
+            urlBuilder.append("&returnDate=").append(returnDate);
+        }
+
+        if (currencyCode != null && !currencyCode.isBlank()) {
+            urlBuilder.append("&currencyCode=").append(currencyCode);
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(accessToken);
+
+        HttpEntity<Void> request = new HttpEntity<>(headers);
+
+        ResponseEntity<AmadeusFlightOfferResponse> response = restTemplate.exchange(
+                urlBuilder.toString(), HttpMethod.GET, request, AmadeusFlightOfferResponse.class
+        );
+
+        return response.getBody() != null ? response.getBody().getData() : List.of();
+    }
+
+
+
 }
 
