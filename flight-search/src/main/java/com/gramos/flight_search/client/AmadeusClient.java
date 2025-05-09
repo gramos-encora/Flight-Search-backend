@@ -83,7 +83,7 @@ public class AmadeusClient {
                 .collect(Collectors.toList());
     }
 
-    public List<FlightOfferDTO> fetchFlightOffers(
+    public AmadeusFlightOfferResponse fetchFlightOffers(
             String origin,
             String destination,
             String departureDate,
@@ -117,10 +117,7 @@ public class AmadeusClient {
                 urlBuilder.toString(), HttpMethod.GET, request, AmadeusFlightOfferResponse.class
         );
 
-        return response.getBody() != null ? response.getBody().getData() : List.of();
+        return response.getBody();  // incluye data y dictionaries
     }
-
-
-
 }
 

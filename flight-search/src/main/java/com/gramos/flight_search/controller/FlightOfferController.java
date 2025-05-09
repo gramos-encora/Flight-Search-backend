@@ -2,6 +2,7 @@ package com.gramos.flight_search.controller;
 
 import com.gramos.flight_search.client.AmadeusClient;
 import com.gramos.flight_search.dto.FlightOfferDTO;
+import com.gramos.flight_search.dto.FlightOfferSearchResponseDTO;
 import com.gramos.flight_search.service.impl.FlightOfferService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ public class FlightOfferController {
     }
 
     @GetMapping
-    public ResponseEntity<List<FlightOfferDTO>> getFlightOffers(
+    public ResponseEntity<FlightOfferSearchResponseDTO> getFlightOffers(
             @RequestParam String origin,
             @RequestParam String destination,
             @RequestParam String departureDate,
@@ -32,11 +33,12 @@ public class FlightOfferController {
             @RequestParam(defaultValue = "3") int max,
             @RequestParam(required = false) String currencyCode
     ) {
-        List<FlightOfferDTO> offers = flightOfferService.searchFlightOffers(
+        FlightOfferSearchResponseDTO response = flightOfferService.searchFlightOffersWithDictionaries(
                 origin, destination, departureDate, returnDate, adults, nonStop, max, currencyCode
         );
-        return ResponseEntity.ok(offers);
+        return ResponseEntity.ok(response);
     }
+
 
 
 }
