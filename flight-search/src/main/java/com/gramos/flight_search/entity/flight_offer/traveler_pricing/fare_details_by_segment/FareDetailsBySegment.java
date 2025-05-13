@@ -7,14 +7,16 @@ public class FareDetailsBySegment {
     private String clazz; // 'class' reserved keyword
     private Bag includedCheckedBags;
     private Bag includedCabinBags;
+    private Amenity[] amenities;
 
-    public FareDetailsBySegment(String segmentId, String cabin, String fareBasis, String clazz, Bag includedCheckedBags, Bag includedCabinBags) {
+    public FareDetailsBySegment(String segmentId, String cabin, String fareBasis, String clazz, Bag includedCheckedBags, Bag includedCabinBags, Amenity[] amenities) {
         this.segmentId = segmentId;
         this.cabin = cabin;
         this.fareBasis = fareBasis;
         this.clazz = clazz;
         this.includedCheckedBags = includedCheckedBags;
         this.includedCabinBags = includedCabinBags;
+        this.amenities = amenities;
     }
 
     public String getSegmentId() {
@@ -63,5 +65,13 @@ public class FareDetailsBySegment {
 
     public void setIncludedCabinBags(Bag includedCabinBags) {
         this.includedCabinBags = includedCabinBags;
+    }
+
+    public Amenity[] getAmenities() {
+        return amenities;
+    }
+
+    public void setAmenities(Amenity[] amenities) {
+        this.amenities = amenities;
     }
 }
